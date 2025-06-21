@@ -1,0 +1,17 @@
+################################################################################
+#                                                                              #
+#                         ZSH MAIN CONFIGURATION FILE                          #
+#                                                                              #
+################################################################################
+
+source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/keybindings.zsh
+source ~/.config/zsh/completions.zsh
+source ~/.config/zsh/exports.zsh
+source ~/.config/zsh/functions/all.zsh
+source ~/.config/zsh/prompt.zsh
+source ~/.config/zsh/setopts.zsh
+source ~/.config/zsh/paths.zsh
+source ~/.config/mise/mise.zsh
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
