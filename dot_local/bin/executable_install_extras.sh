@@ -32,13 +32,11 @@ if ! command -v brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+brew update
+
 # Install CLI tools
 echo "[bootstrap] Installing CLI packages..."
-brew update
-brew install \
-  git git-extras nvim tmux ripgrep fd mise openssl gh \
-  zsh zsh-syntax-highlighting \
-  dos2unix exiftool ffmpeg imagemagick pandoc \
+brew install gh exiftool ffmpeg imagemagick pandoc \
   postgresql sqlite
 
 # Install GUI apps (casks)
@@ -48,24 +46,5 @@ brew install --cask \
   db-browser-for-sqlite camo-studio krisp zoom telegram \
   the-unarchiver transmission
 
-# Set up TPM for tmux
-TPM_DIR="$HOME/.tmux/plugins/tpm"
-if [ ! -d "$TPM_DIR" ]; then
-  echo "[bootstrap] Installing TPM (Tmux Plugin Manager)..."
-  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
-else
-  echo "[bootstrap] TPM already installed."
-fi
-
-# Install chezmoi
-if ! command -v chezmoi >/dev/null 2>&1; then
-  echo "[bootstrap] Installing chezmoi..."
-  brew install chezmoi
-fi
-
-# Apply dotfiles
-echo "[bootstrap] Applying dotfiles..."
-chezmoi init --apply
-
-echo "[bootstrap] Done. You should restart your shell."
+echo "Extras installed. Restart your shell."
 
