@@ -1,0 +1,34 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+set -e
+
+echo "[chezmoi] Bootstrapping dotfiles environment..."
+
+# Install Homebrew if not present
+if ! command -v brew >/dev/null 2>&1; then
+  echo "[chezmoi] Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+brew update
+
+# Install CLI tools
+brew install \
+  git \
+  git-extras \
+  nvim \
+  tmux \
+  ripgrep \
+  fd \
+  mise \
+  openssl \
+  zsh \
+  zsh-syntax-highlighting
+
+# Install Casks
+brew install --cask ghostty
+
+echo "[chezmoi] Minimal CLI bootstrap complete."
+{{ end -}}
+
