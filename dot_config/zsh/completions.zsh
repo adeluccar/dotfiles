@@ -13,5 +13,13 @@ if [[ -d "$HOME/.docker/completions" ]]; then
   fpath=("$HOME/.docker/completions" $fpath)
 fi
 
-autoload -U compinit
-compinit
+autoload -Uz compinit
+
+# Check if the current user is an admin
+if id -Gn | grep -qw admin; then
+  # User IS an admin → run compinit normally
+  compinit
+else
+  # User is a standard (non-admin) account → ignore insecure directories
+  compinit -i
+fi

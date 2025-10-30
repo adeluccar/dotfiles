@@ -4,9 +4,9 @@
 #                                                                              #
 ################################################################################
 
+source ~/.config/zsh/completions.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/keybindings.zsh
-source ~/.config/zsh/completions.zsh
 source ~/.config/zsh/exports.zsh
 source ~/.config/zsh/functions/all.zsh
 source ~/.config/zsh/prompt.zsh
